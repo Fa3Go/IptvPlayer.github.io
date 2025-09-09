@@ -229,6 +229,13 @@ function displayPlaylist(playlist) {
     const playlistElement = document.getElementById('playlist');
     playlistElement.innerHTML = '';
 
+    if (playlist.length === 0) {
+        showEmptyPlaylistMessage();
+        // 清空播放器
+        if (player) player.src({ src: '', type: '' });
+        return;
+    }
+
     playlist.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = item.title;
